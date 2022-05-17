@@ -27,8 +27,8 @@
                                         value="{{ old('PropertyName') }}" required autocomplete="PropertyName" autofocus>
 
                                     @error('PropertyName')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
+                                        <span class="text-danger" role="alert">
+                                            <small>{{ $message }}</small>
                                         </span>
                                     @enderror
                                 </div>
@@ -39,8 +39,8 @@
                                         value="{{ old('location') }}" required autocomplete="location">
 
                                     @error('location')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
+                                        <span class="text-danger" role="alert">
+                                            <small>{{ $message }}</small>
                                         </span>
                                     @enderror
                                 </div>
@@ -55,8 +55,8 @@
                                         value="{{ old('PropertyType') }}" required autocomplete="PropertyType">
 
                                     @error('PropertyType')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
+                                        <span class="text-danger" role="alert">
+                                            <small>{{ $message }}</small>
                                         </span>
                                     @enderror
                                 </div>
@@ -69,8 +69,8 @@
                                         <option value="sell">Sell</option>
                                     </select>
                                     @error('status')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
+                                        <span class="text-danger" role="alert">
+                                            <small>{{ $message }}</small>
                                         </span>
                                     @enderror
                                 </div>
@@ -84,8 +84,8 @@
                                         name="area" value="{{ old('area') }}" required autocomplete="area">
 
                                     @error('area')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
+                                        <span class="text-danger" role="alert">
+                                            <small>{{ $message }}</small>
                                         </span>
                                     @enderror
                                 </div>
@@ -96,8 +96,8 @@
                                         name="Beds" value="{{ old('Beds') }}" required autocomplete="Beds">
 
                                     @error('Beds')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
+                                        <span class="text-danger" role="alert">
+                                            <small>{{ $message }}</small>
                                         </span>
                                     @enderror
                                 </div>
@@ -109,8 +109,8 @@
                                         value="{{ old('Baths') }}" required autocomplete="Baths">
 
                                     @error('Baths')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
+                                        <span class="text-danger" role="alert">
+                                            <small>{{ $message }}</small>
                                         </span>
                                     @enderror
                                 </div>
@@ -121,8 +121,8 @@
                                         value="{{ old('garage') }}" required autocomplete="garage">
 
                                     @error('garage')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
+                                        <span class="text-danger" role="alert">
+                                            <small>{{ $message }}</small>
                                         </span>
                                     @enderror
                                 </div>
@@ -135,8 +135,8 @@
 
                                     <textarea name="PropertyDesc" class="form-control" id="PropertyDesc" rows="3">{{ old('PropertyDesc') }}</textarea>
                                     @error('PropertyDesc')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
+                                        <span class="text-danger" role="alert">
+                                            <small>{{ $message }}</small>
                                         </span>
                                     @enderror
                                 </div>
@@ -149,8 +149,8 @@
                                         name="price" value="{{ old('price') }}" required autocomplete="price">
 
                                     @error('price')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
+                                        <span class="text-danger" role="alert">
+                                            <small>{{ $message }}</small>
                                         </span>
                                     @enderror
                                 </div>
@@ -162,8 +162,8 @@
                                         value="{{ old('amenities') }}" required autocomplete="amenities">
 
                                     @error('amenities')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
+                                        <span class="text-danger" role="alert">
+                                            <small>{{ $message }}</small>
                                         </span>
                                     @enderror
                                 </div>
@@ -174,8 +174,8 @@
                                         value="{{ old('pincode') }}" required autocomplete="pincode">
 
                                     @error('pincode')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
+                                        <span class="text-danger" role="alert">
+                                            <small>{{ $message }}</small>
                                         </span>
                                     @enderror
                                 </div>
@@ -192,8 +192,8 @@
                                         value="{{ old('propertyImage') }}" required autocomplete="propertyImage">
 
                                     @error('propertyImage')
-                                        <span class="invalid-feedback" role="alert">
-                                            <strong>{{ $message }}</strong>
+                                        <span class="text-danger" role="alert">
+                                            <small>{{ $message }}</small>
                                         </span>
                                     @enderror
                                 </div>

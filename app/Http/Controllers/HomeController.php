@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Property;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -19,7 +20,9 @@ class HomeController extends Controller
 
     public function welcome()
     {
-        return view('welcome');
+        $properties = Property::inRandomOrder()->take(3)->get();
+        $latest_properties = Property::orderBy('id', 'desc')->take(5)->get();
+        return view('welcome', compact('properties', 'latest_properties'));
     }
 
     public function property()

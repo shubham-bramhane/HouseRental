@@ -140,7 +140,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-10 d-flex">
+                <div class="col-md-10 d-flex gap-1">
                     <a href="#" class="btn btn-b-n fw-bold btn-lg">Book Now</a>
                 </div>
             </div>
