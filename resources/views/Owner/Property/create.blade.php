@@ -1,217 +1,216 @@
 @extends('layouts.mainhouse')
 
 @section('page-content')
+    <div class="container">
+        <div class="row justify-content-center" style="margin-top: 193px;">
+            <div class="col-md-10">
+                @if (session('status'))
+                    <div class="alert alert-success" role="alert">
+                        {{ session('status') }}
+                    </div>
+                @endif
+                <div class="card">
+                    <div class="card-header bg-success text-white fw-bold" style="text-align: center;">
+                        {{ __('Add Property') }}</div>
 
-<div class="container">
-    <div class="row justify-content-center" style="margin-top: 193px;">
-        <div class="col-md-10">
-            <div class="card">
-                <div class="card-header" style="text-align: center;">{{ __('Add Property') }}</div>
+                    <div class="card-body">
+                        <form method="POST" action="{{ route('owner.store') }}" enctype="multipart/form-data">
+                            @csrf
 
-                <div class="card-body">
-                    <form method="POST" action="{{ route('owner.store') }}" enctype="multipart/form-data">
-                        @csrf
+                            <div class="row mb-3">
 
-                        <div class="row mb-3">
-                            <label for="PropertyName" class="col-md-4 col-form-label text-md-end">{{ __('Property Name') }}</label>
+                                <div class="col-md-6">
+                                    <label for="PropertyName"
+                                        class="col-form-label text-md-end">{{ __('Property Name') }}</label>
+                                    <input id="PropertyName" type="text"
+                                        class="form-control @error('PropertyName') is-invalid @enderror" name="PropertyName"
+                                        value="{{ old('PropertyName') }}" required autocomplete="PropertyName" autofocus>
 
-                            <div class="col-md-6">
-                                <input id="PropertyName" type="text" class="form-control @error('PropertyName') is-invalid @enderror" name="PropertyName" value="{{ old('PropertyName') }}" required autocomplete="PropertyName" autofocus>
+                                    @error('PropertyName')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="location" class=" col-form-label text-md-end">{{ __('Location') }}</label>
+                                    <input id="location" type="text"
+                                        class="form-control @error('location') is-invalid @enderror" name="location"
+                                        value="{{ old('location') }}" required autocomplete="location">
 
-                                @error('PropertyName')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                                    @error('location')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
                             </div>
-                        </div>
 
-                        <div class="row mb-3">
-                            <label for="location" class="col-md-4 col-form-label text-md-end">{{ __('Location') }}</label>
+                            <div class="row mb-3">
+                                <div class="col-md-6">
+                                    <label for="PropertyType"
+                                        class=" col-form-label text-md-end">{{ __('Property Type') }}</label>
+                                    <input id="PropertyType" type="text"
+                                        class="form-control @error('PropertyType') is-invalid @enderror" name="PropertyType"
+                                        value="{{ old('PropertyType') }}" required autocomplete="PropertyType">
 
-                            <div class="col-md-6">
-                                <input id="location" type="text" class="form-control @error('location') is-invalid @enderror" name="location" value="{{ old('location') }}" required autocomplete="location" autofocus>
+                                    @error('PropertyType')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
 
-                                @error('location')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                                <div class="col-md-6">
+                                    <label for="status" class=" col-form-label text-md-end">{{ __('Status') }}</label>
+                                    <select class="form-select" name="status" id="status">
+                                        <option selected disabled>select</option>
+                                        <option value="rent">Rent</option>
+                                        <option value="sell">Sell</option>
+                                    </select>
+                                    @error('status')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
                             </div>
-                        </div>
 
+                            <div class="row mb-3">
+                                <div class="col-md-3">
+                                    <label for="area" class=" col-form-label text-md-end">{{ __('Area') }} (in
+                                        m<sup>2</sup>)</label>
+                                    <input id="area" type="number" class="form-control @error('area') is-invalid @enderror"
+                                        name="area" value="{{ old('area') }}" required autocomplete="area">
 
+                                    @error('area')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
 
-                        <div class="row mb-3">
-                            <label for="PropertyType" class="col-md-4 col-form-label text-md-end">{{ __('Property Type') }}</label>
+                                <div class="col-md-3">
+                                    <label for="Beds" class=" col-form-label text-md-end">{{ __('Beds') }}</label>
+                                    <input id="Beds" type="number" class="form-control @error('Beds') is-invalid @enderror"
+                                        name="Beds" value="{{ old('Beds') }}" required autocomplete="Beds">
 
-                            <div class="col-md-6">
-                                <input id="PropertyType" type="text" class="form-control @error('PropertyType') is-invalid @enderror" name="PropertyType" value="{{ old('PropertyType') }}" required autocomplete="PropertyType" autofocus>
+                                    @error('Beds')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
 
-                                @error('PropertyType')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                                <div class="col-md-3">
+                                    <label for="Baths" class=" col-form-label text-md-end">{{ __('Baths') }}</label>
+                                    <input id="Baths" type="number"
+                                        class="form-control @error('Baths') is-invalid @enderror" name="Baths"
+                                        value="{{ old('Baths') }}" required autocomplete="Baths">
+
+                                    @error('Baths')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                                <div class="col-md-3">
+                                    <label for="garage" class=" col-form-label text-md-end">{{ __('Garages') }}</label>
+                                    <input id="garage" type="number"
+                                        class="form-control @error('garage') is-invalid @enderror" name="garage"
+                                        value="{{ old('garage') }}" required autocomplete="garage">
+
+                                    @error('garage')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
                             </div>
-                        </div>
 
+                            <div class="row mb-3">
+                                <div class="col-md-12">
+                                    <label for="PropertyDesc"
+                                        class=" col-form-label text-md-end">{{ __('Property Description') }}</label>
 
-
-                        <div class="row mb-3">
-                            <label for="status" class="col-md-4 col-form-label text-md-end">{{ __('Status') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="status" type="text" class="form-control @error('status') is-invalid @enderror" name="status" value="{{ old('status') }}" required autocomplete="status" autofocus>
-
-                                @error('status')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                                    <textarea name="PropertyDesc" class="form-control" id="PropertyDesc" rows="3">{{ old('PropertyDesc') }}</textarea>
+                                    @error('PropertyDesc')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
                             </div>
-                        </div>
 
+                            <div class="row mb-3">
+                                <div class="col-md-4">
+                                    <label for="price" class=" col-form-label text-md-end">{{ __('Price') }}</label>
+                                    <input id="price" type="text" class="form-control @error('price') is-invalid @enderror"
+                                        name="price" value="{{ old('price') }}" required autocomplete="price">
 
+                                    @error('price')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="amenities"
+                                        class=" col-form-label text-md-end">{{ __('Amenities') }}</label>
+                                    <input id="amenities" type="text"
+                                        class="form-control @error('amenities') is-invalid @enderror" name="amenities"
+                                        value="{{ old('amenities') }}" required autocomplete="amenities">
 
-                        <div class="row mb-3">
-                            <label for="area" class="col-md-4 col-form-label text-md-end">{{ __('Area') }}</label>
+                                    @error('amenities')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                                <div class="col-md-4">
+                                    <label for="pincode" class=" col-form-label text-md-end">{{ __('Pin Code') }}</label>
+                                    <input id="pincode" type="number"
+                                        class="form-control @error('pincode') is-invalid @enderror" name="pincode"
+                                        value="{{ old('pincode') }}" required autocomplete="pincode">
 
-                            <div class="col-md-6">
-                                <input id="area" type="text" class="form-control @error('area') is-invalid @enderror" name="area" value="{{ old('area') }}" required autocomplete="area" autofocus>
-
-                                @error('area')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                                    @error('pincode')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
                             </div>
-                        </div>
 
 
+                            <div class="row mb-3">
 
-                        <div class="row mb-3">
-                            <label for="Beds" class="col-md-4 col-form-label text-md-end">{{ __('Beds') }}</label>
+                                <div class="col-md-12">
+                                    <label for="propertyImage"
+                                        class=" col-form-label text-md-end">{{ __('Property image') }}</label>
+                                    <input id="propertyImage" type="file"
+                                        class="form-control @error('price') is-invalid @enderror" name="propertyImage"
+                                        value="{{ old('propertyImage') }}" required autocomplete="propertyImage">
 
-                            <div class="col-md-6">
-                                <input id="Beds" type="text" class="form-control @error('Beds') is-invalid @enderror" name="Beds" value="{{ old('Beds') }}" required autocomplete="Beds" autofocus>
-
-                                @error('Beds')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                                    @error('propertyImage')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
                             </div>
-                        </div>
-
-
-                        <div class="row mb-3">
-                            <label for="Baths" class="col-md-4 col-form-label text-md-end">{{ __('Baths') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="Baths" type="text" class="form-control @error('Baths') is-invalid @enderror" name="Baths" value="{{ old('Baths') }}" required autocomplete="Baths" autofocus>
-
-                                @error('Baths')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-
-                        <div class="row mb-3">
-                            <label for="garage" class="col-md-4 col-form-label text-md-end">{{ __('Garage') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="garage" type="text" class="form-control @error('garage') is-invalid @enderror" name="garage" value="{{ old('garage') }}" required autocomplete="garage" autofocus>
-
-                                @error('garage')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-
-                        <div class="row mb-3">
-                            <label for="PropertyDesc" class="col-md-4 col-form-label text-md-end">{{ __('Property Description') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="PropertyDesc" type="textarea" class="form-control @error('PropertyDesc') is-invalid @enderror" name="PropertyDesc" value="{{ old('PropertyDesc') }}" required autocomplete="PropertyDesc" autofocus>
-
-                                @error('PropertyDesc')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-
-                        <div class="row mb-3">
-                            <label for="price" class="col-md-4 col-form-label text-md-end">{{ __('Price') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="price" type="text" class="form-control @error('price') is-invalid @enderror" name="price" value="{{ old('price') }}" required autocomplete="price" autofocus>
-
-                                @error('price')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-
-                        <div class="row mb-3">
-                            <label for="amenities" class="col-md-4 col-form-label text-md-end">{{ __('Amenities') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="amenities" type="text" class="form-control @error('amenities') is-invalid @enderror" name="amenities" value="{{ old('amenities') }}" required autocomplete="amenities" autofocus>
-
-                                @error('amenities')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
-
-
-                        <div class="row mb-3">
-                            <label for="propertyImage" class="col-md-4 col-form-label text-md-end">{{ __('Property image') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="propertyImage" type="file" class="form-control @error('price') is-invalid @enderror" name="propertyImage" value="{{ old('propertyImage') }}" required autocomplete="propertyImage" autofocus>
-
-                                @error('propertyImage')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
 
 
 
 
 
 
-                        <div class="row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Submit') }}
-                                </button>
-                            </div>
-                        </div>
-                    </form>
+                            <button type="submit" class="btn btn-b-n fw-bold">
+                                {{ __('Submit') }}
+                            </button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-
-
 @endsection

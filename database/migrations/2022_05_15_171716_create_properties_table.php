@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained();
             $table->string('location');
+            $table->string('pincode');
             $table->string('PropertyName');
             $table->string('PropertyType');
             $table->string('status');
@@ -24,7 +25,7 @@ return new class extends Migration
             $table->string('Beds');
             $table->string('Baths');
             $table->string('garage');
-            $table->string('PropertyDesc');
+            $table->text('PropertyDesc');
             $table->string('price');
             $table->string('amenities');
             $table->string('propertyImage');

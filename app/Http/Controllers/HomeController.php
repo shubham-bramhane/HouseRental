@@ -7,14 +7,11 @@ use Illuminate\Http\Request;
 class HomeController extends Controller
 {
 
-
-
     public function index()
     {
-        if (auth()->user()->type=="owner"){
+        if (auth()->user()->type == "owner") {
             return redirect()->route('owner.index');
-        }
-        else {
+        } else {
             return redirect()->route('welcome');
         }
     }
@@ -29,7 +26,4 @@ class HomeController extends Controller
     {
         return view('property');
     }
-
-
-
 }
