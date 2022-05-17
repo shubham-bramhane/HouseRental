@@ -15,4 +15,24 @@ class Property extends Model
     {
         return asset('storage/' . $this->propertyImage);
     }
+
+    public function isPropertyBooked(): bool
+    {
+        return OwnerTenantList::where('property_id', $this->id)->where('user_id', auth()->id())->exists();
+    }
+
+    public function HasBooked(): bool
+    {
+        return OwnerTenantList::where('property_id', $this->id)->exists();
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function lists()
+    {
+        return $this->hasMany(OwnerTenantList::class);
+    }
 }

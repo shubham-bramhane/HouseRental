@@ -44,9 +44,13 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-public function isOwner():bool
-{
-return $this->type=='owner';
-}
+    public function isOwner(): bool
+    {
+        return $this->type == 'owner';
+    }
 
+    public function lists()
+    {
+        return $this->hasMany(OwnerTenantList::class);
+    }
 }

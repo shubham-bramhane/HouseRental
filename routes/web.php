@@ -24,12 +24,13 @@ Route::view('contact', [ContactController::class, 'contact'])->name('contact');
 Route::post('contact', [ContactController::class, 'store'])->name('contact.store');
 
 Route::middleware('auth')->group(function () {
-    Route::get('book-now', [AdminController::class, 'booked'])->name('owner.book');
+    Route::get('book-now/{id}', [AdminController::class, 'booked'])->name('owner.book');
 
     Route::middleware('owner')->group(function () {
         Route::get('owner', [PropertyController::class, 'index'])->name('owner.index');
         Route::post('owner', [PropertyController::class, 'store'])->name('owner.store');
         Route::get('owner/create', [PropertyController::class, 'create'])->name('owner.create');
         Route::delete('owner/{id}', [PropertyController::class, 'destroy'])->name('owner.destroy');
+        Route::get('owner/tenant-list', [PropertyController::class, 'list'])->name('owner.tenant.list');
     });
 });

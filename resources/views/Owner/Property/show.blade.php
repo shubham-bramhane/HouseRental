@@ -140,8 +140,23 @@
                         </div>
                     </div>
                 </div>
+                <div class="col-md-10 my-2">
+                    @if ($property->isPropertyBooked() || $property->HasBooked())
+                        Property Already Booked <br>
+                    @endif
+
+                    @if (auth()->user()->type == 'owner')
+                        You are not authorized to book property
+                    @endif
+                </div>
                 <div class="col-md-10 d-flex gap-1">
-                    <a href="#" class="btn btn-b-n fw-bold btn-lg">Book Now</a>
+
+                    @if ($property->isPropertyBooked())
+                        <a href="{{ route('owner.book', $property->id) }}" class="btn btn-b-n fw-bold btn-lg">Cancel</a>
+                    @else
+                        <a href="{{ route('owner.book', $property->id) }}" class="btn btn-b-n fw-bold btn-lg">Book
+                            Now</a>
+                    @endif
                 </div>
             </div>
         </div>

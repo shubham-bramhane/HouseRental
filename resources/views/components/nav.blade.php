@@ -49,7 +49,7 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link " href="{{ route('logout') }}" onclick="event.preventDefault();
-                                          document.getElementById('logout-form').submit();">Logout</a>
+                                                          document.getElementById('logout-form').submit();">Logout</a>
                         </li>
 
 
@@ -69,17 +69,15 @@
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item {{ request()->routeIs('owner.create') ? 'active' : '' }}"
                                     href="{{ route('owner.create') }}">Add Property</a>
-                                <a class="dropdown-item {{ request()->routeIs('contact') ? 'active' : '' }}"
-                                    href="{{ route('contact') }}">Add House</a>
                                 <a class="dropdown-item" href="{{ route('owner.index') }}">My Property</a>
-                                <a class="dropdown-item" href="{{ route('owner.index') }}">Tenant List</a>
+                                <a class="dropdown-item" href="{{ route('owner.tenant.list') }}">Tenant List</a>
 
                             </div>
                         </li>
 
                         <li class="nav-item">
                             <a class="nav-link " href="{{ route('logout') }}" onclick="event.preventDefault();
-                                          document.getElementById('logout-form').submit();">Logout</a>
+                                                          document.getElementById('logout-form').submit();">Logout</a>
                         </li>
 
 

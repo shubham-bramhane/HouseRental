@@ -165,7 +165,8 @@
                                     </div>
                                     <div class="card-body-a">
                                         <div class="price-box d-flex">
-                                            <span class="price-a">rent | $ 12.000</span>
+                                            <span class="price-a">{{ $property->status }} |
+                                                {{ $property->price }}</span>
                                         </div>
                                         <a href="{{ route('property.show', $property->id) }}"
                                             class="link-a">Click here to view

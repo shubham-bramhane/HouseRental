@@ -14,36 +14,29 @@
                         <thead>
                             <tr>
                                 <th scope="col">#</th>
-                                <th scope="col">Property Image</th>
                                 <th scope="col">Property Name</th>
-                                <th scope="col">Property Status</th>
+                                <th scope="col">Tenant Name</th>
                                 <th scope="col">Property Price</th>
                                 <th scope="col">Handle</th>
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($properties as $property)
+                            @foreach ($lists as $list)
                                 <tr>
                                     <th scope="row">{{ $loop->iteration }}</th>
                                     <td>
-                                        <img src="{{ $property->image() }}" style="width: 100px;"
-                                            alt="{{ $property->PropertyName }}">
+                                        {{ $list->property->PropertyName }}
                                     </td>
                                     <td>
-                                        <a href="{{ route('property.show', $property->id) }}">
-                                            {{ $property->PropertyName }}
-                                        </a>
+                                        {{ $list->user->name }}
                                     </td>
-                                    <td>{{ $property->status }}</td>
-                                    <td>{{ $property->price }}</td>
-                                    <td class="d-flex gap-1">
-                                        {{-- <a class="btn btn-info"
-                                            href="{{ route('owner.tenant.list', $property->id) }}">Lists</a> --}}
-                                        <form action="{{ route('owner.destroy', $property->id) }}" method="post">
+                                    <td>{{ $list->property->price }}/-</td>
+                                    <td>
+                                        {{-- <form action="{{ route('owner.destroy', $property->id) }}" method="post">
                                             @csrf
                                             @method('delete')
                                             <button class="btn btn-danger">Delete</button>
-                                        </form>
+                                        </form> --}}
                                     </td>
                                 </tr>
                             @endforeach

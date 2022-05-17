@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\OwnerTenantList;
 use App\Models\Property;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -72,5 +73,15 @@ class PropertyController extends Controller
         Storage::disk('public')->delete($property->propertyImage);
         $property->delete();
         return back()->with('status', 'Property Deleted Successfully');
+    }
+
+    public function list()
+    {
+        $property_ids = Property::where('user_id', auth()->id())->pluck('id');
+
+        // dd($property_ids);
+        $lists = OwnerTenantList::with('user', 'property')->find($property_ids);
+
+        return view('Owner.Property.list', compact('lists'));
     }
 }
