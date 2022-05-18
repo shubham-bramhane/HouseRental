@@ -27,6 +27,7 @@ class HomeController extends Controller
 
     public function property()
     {
-        return view('property');
+        $properties = Property::inRandomOrder()->simplePaginate(6);
+        return view('property', compact('properties'));
     }
 }
