@@ -13,7 +13,7 @@ class Property extends Model
 
     public function Image(): string
     {
-        return asset('storage/' . $this->propertyImage);
+        return $this->propertyImage ? asset('storage/' . $this->propertyImage) : asset('img/no-image.png');
     }
 
     public function isPropertyBooked(): bool

@@ -43,23 +43,6 @@
                             href="{{ route('register') }}">Register</a>
                     </li>
                 @else
-                    @if (!auth()->user()->isOwner())
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('owner.index') }}">My Profile</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link " href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                          document.getElementById('logout-form').submit();">Logout</a>
-                        </li>
-
-
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                            @csrf
-                        </form>
-                    @endif
-
-
-
                     @if (auth()->user()->isOwner())
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
@@ -74,17 +57,21 @@
 
                             </div>
                         </li>
-
+                    @else
                         <li class="nav-item">
-                            <a class="nav-link " href="{{ route('logout') }}" onclick="event.preventDefault();
-                                                          document.getElementById('logout-form').submit();">Logout</a>
+                            <a class="nav-link" href="{{ route('tenant.list') }}">My Profile</a>
                         </li>
-
-
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                            @csrf
-                        </form>
                     @endif
+
+                    <li class="nav-item">
+                        <a class="nav-link " href="{{ route('logout') }}"
+                            onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Logout</a>
+                    </li>
+
+
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                        @csrf
+                    </form>
 
                 @endguest
 
@@ -97,3 +84,30 @@
     </div>
 </nav>
 <!--/ Nav End /-->
+
+
+<div class="click-closed"></div>
+<!--/ Form Search Star /-->
+<div class="box-collapse">
+    <div class="title-box-d">
+        <h3 class="title-d">Search Property</h3>
+    </div>
+    <span class="close-box-collapse right-boxed ion-ios-close"></span>
+    <div class="box-collapse-wrap form">
+        <form class="form-a" action="{{ route('property') }}" method="get">
+            <div class="row">
+                <div class="col-md-12 mb-2">
+                    <div class="form-group">
+                        <label for="pincode">Pin code</label>
+                        <input type="number" id="pincode" name="pincode"
+                            class="form-control form-control-lg form-control-a" placeholder="pin code">
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <button type="submit" class="btn btn-b">Search Property</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<!--/ Form Search End /-->

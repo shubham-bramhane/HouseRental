@@ -10,11 +10,7 @@ class HomeController extends Controller
 
     public function index()
     {
-        if (auth()->user()->type == "owner") {
-            return redirect()->route('owner.index');
-        } else {
-            return redirect()->route('welcome');
-        }
+        return redirect()->route('welcome');
     }
 
 
@@ -27,7 +23,11 @@ class HomeController extends Controller
 
     public function property()
     {
-        $properties = Property::inRandomOrder()->simplePaginate(6);
+        $properties = Property::when(request()->has('pincode'), function ($query) {
+            $query->where('pincode', request()->pincode);
+        })
+            ->inRandomOrder()
+            ->simplePaginate(6);
         return view('property', compact('properties'));
     }
 }

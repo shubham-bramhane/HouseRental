@@ -15,7 +15,6 @@
                             <tr>
                                 <th scope="col">#</th>
                                 <th scope="col">Property Name</th>
-                                <th scope="col">Tenant Name</th>
                                 <th scope="col">Property Price</th>
                                 <th scope="col">Handle</th>
                             </tr>
@@ -27,12 +26,9 @@
                                     <td>
                                         {{ $list->property->PropertyName }}
                                     </td>
-                                    <td>
-                                        {{ $list->user->name }}
-                                    </td>
                                     <td>{{ $list->property->price }}/-</td>
                                     <td>
-                                        <form action="{{ route('owner.cancel', $list->id) }}" method="post">
+                                        <form action="{{ route('tenant.cancel', $list->property_id) }}" method="post">
                                             @csrf
                                             @method('delete')
                                             <button class="btn btn-danger">Delete</button>

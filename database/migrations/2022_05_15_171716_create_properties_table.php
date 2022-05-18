@@ -28,7 +28,7 @@ return new class extends Migration
             $table->text('PropertyDesc');
             $table->string('price');
             $table->string('amenities');
-            $table->string('propertyImage');
+            $table->string('propertyImage')->nullable();
 
 
             $table->timestamps();

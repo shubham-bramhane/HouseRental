@@ -152,7 +152,11 @@
                 <div class="col-md-10 d-flex gap-1">
 
                     @if ($property->isPropertyBooked())
-                        <a href="{{ route('owner.book', $property->id) }}" class="btn btn-b-n fw-bold btn-lg">Cancel</a>
+                        <form action="{{ route('tenant.cancel', $property->id) }}" method="post">
+                            @csrf
+                            @method('delete')
+                            <button class="btn btn-b-n fw-bold btn-lg">Cancel</button>
+                        </form>
                     @else
                         <a href="{{ route('owner.book', $property->id) }}" class="btn btn-b-n fw-bold btn-lg">Book
                             Now</a>

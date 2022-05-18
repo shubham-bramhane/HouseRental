@@ -28,9 +28,22 @@ class AdminController extends Controller
         return back()->with('status', 'Property Booked Successfully');
     }
 
+    public function list()
+    {
+        $lists = OwnerTenantList::where('user_id', auth()->id())->get();
+
+        return view('Tenant.list', compact('lists'));
+    }
+
     public function cancel($id)
     {
-        $list = OwnerTenantList::find($id);
+        OwnerTenantList::find($id)->delete();
+        return back()->with('status', 'Property Cancelled Successfully');
+    }
+
+    public function cancelByUser($id)
+    {
+        $list = OwnerTenantList::where('property_id', $id)->first();
 
         $list->delete();
 

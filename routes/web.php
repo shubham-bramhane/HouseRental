@@ -25,6 +25,9 @@ Route::post('contact', [ContactController::class, 'store'])->name('contact.store
 
 Route::middleware('auth')->group(function () {
     Route::get('book-now/{id}', [AdminController::class, 'booked'])->name('owner.book');
+    Route::delete('book-cancel/{id}', [AdminController::class, 'cancelByUser'])->name('tenant.cancel');
+    Route::get('tenant-list', [AdminController::class, 'list'])->name('tenant.list');
+
 
     Route::middleware('owner')->group(function () {
         Route::get('owner', [PropertyController::class, 'index'])->name('owner.index');
@@ -32,5 +35,6 @@ Route::middleware('auth')->group(function () {
         Route::get('owner/create', [PropertyController::class, 'create'])->name('owner.create');
         Route::delete('owner/{id}', [PropertyController::class, 'destroy'])->name('owner.destroy');
         Route::get('owner/tenant-list', [PropertyController::class, 'list'])->name('owner.tenant.list');
+        Route::delete('owner-cancel/{id}', [AdminController::class, 'cancel'])->name('owner.cancel');
     });
 });
