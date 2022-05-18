@@ -23,11 +23,14 @@ class HomeController extends Controller
 
     public function property()
     {
-        $properties = Property::when(request()->has('pincode'), function ($query) {
-            $query->where('pincode', request()->pincode);
-        })
+        $properties = Property::query()
+            ->when(request()->has('pincode'), function ($query) {
+                $query->where('pincode', request()->pincode);
+            })
             ->inRandomOrder()
-            ->simplePaginate(6);
+            ->simplePaginate(6)
+            ->withQueryString();
+
         return view('property', compact('properties'));
     }
 }

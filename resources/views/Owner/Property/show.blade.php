@@ -145,9 +145,11 @@
                         Property Already Booked <br>
                     @endif
 
-                    @if (auth()->user()->type == 'owner')
-                        You are not authorized to book property
-                    @endif
+                    @auth
+                        @if (auth()->user()->type == 'owner')
+                            You are not authorized to book property
+                        @endif
+                    @endauth
                 </div>
                 <div class="col-md-10 d-flex gap-1">
 
