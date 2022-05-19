@@ -70,7 +70,9 @@ class PropertyController extends Controller
     {
         $property = Property::find($id);
 
-        Storage::disk('public')->delete($property->propertyImage);
+        if ($property->propertyImage) {
+            Storage::disk('public')->delete($property->propertyImage);
+        }
         $property->delete();
         return back()->with('status', 'Property Deleted Successfully');
     }
@@ -79,7 +81,6 @@ class PropertyController extends Controller
     {
         $property_ids = Property::where('user_id', auth()->id())->pluck('id');
 
-        // dd($property_ids);
         $lists = OwnerTenantList::with('user', 'property')->find($property_ids);
 
         return view('Owner.Property.list', compact('lists'));
