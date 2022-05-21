@@ -81,7 +81,15 @@ class PropertyController extends Controller
     {
         $property_ids = Property::where('user_id', auth()->id())->pluck('id');
 
-        $lists = OwnerTenantList::with('user', 'property')->find($property_ids);
+        $lists = collect();
+
+        foreach ($property_ids as $property_id) {
+            $owner_tenant_list = OwnerTenantList::with('property')->where('property_id', $property_id)->first();
+
+            if ($owner_tenant_list) {
+                $lists[] = $owner_tenant_list;
+            }
+        }
 
         return view('Owner.Property.list', compact('lists'));
     }
